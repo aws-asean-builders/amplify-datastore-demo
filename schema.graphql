@@ -1,0 +1,10 @@
+enum TaskStatus {
+  PENDING
+  COMPLETED
+}
+
+type Task @model {
+  id: ID!
+  name: String!
+  status: TaskStatus!
+}

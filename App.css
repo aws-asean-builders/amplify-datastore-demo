@@ -1,0 +1,14 @@
+.task-container{
+  margin-top: 2.5em !important;
+}
+
+.task-item-input-pending{
+  line-height: 1.5em;
+  font-size: 1.5em;
+}
+
+.task-item-input-completed{
+  line-height: 1.5em;
+  font-size: 1.5em;
+  text-decoration: line-through;
+}

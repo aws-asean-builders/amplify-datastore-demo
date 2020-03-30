@@ -1,15 +1,17 @@
 # AWS Amplify DataStore Demo
 
+This repository shows how to build a simple to-do list application which uses [AWS Amplify DataStore](https://aws-amplify.github.io/docs/js/datastore) to sync the data between the multiple concurrent users.
+
 ## Instructions
 
-0. Install the CLI tools.
+Step 0 - Install the required CLI tools.
 ```
 yarn global add create-react-app
 yarn global add @aws-amplify/cli
 yarn global add amplify-app
 ```
 
-1. Setup new React project.
+Step 1 - Setup new React app.
 ```
 create-react-app amplify-datastore-app
 cd amplify-datastore-app
@@ -20,12 +22,12 @@ yarn start
 
 git init
 git add -A
-git commit -a -m 'Setup new React project.'
+git commit -a -m 'Setup new React app.'
 
 # Open http://localhost:3000
 ```
 
-2. Add Amplify DataStore to the project.
+Step 2 - Add Amplify DataStore to the project. This step will setup Amplify on the project and then add the required dependencies (Amplify DataStore and Semantic UI).
 ```
 amplify-app
 yarn add @aws-amplify/core @aws-amplify/datastore semantic-ui-css
@@ -34,7 +36,7 @@ git add -A
 git commit -a -m 'Add Amplify DataStore to the project.'
 ```
 
-3. Add GraphQL schema and then generate the model(s).
+Step 3 - Add GraphQL schema and then generate the Amplify DataStore model(s).
 ```
 curl -o amplify/backend/api/amplifyDatasource/schema.graphql \
   https://raw.githubusercontent.com/aonz/amplify-datastore-demo/master/schema.graphql
@@ -42,10 +44,10 @@ curl -o amplify/backend/api/amplifyDatasource/schema.graphql \
 yarn amplify-modelgen
 
 git add -A
-git commit -a -m 'Add GraphQL schema and then generate the model(s).'
+git commit -a -m 'Add GraphQL schema and then generate the Amplify DataStore model(s).'
 ```
 
-4. Use Amplify DataStore in the local mode.
+Step 4 - Use Amplify DataStore in the local mode. This step will copy the to-do list app code to the project. The app now works without the backend services on AWS.
 ```
 curl -o src/App.js \
   https://raw.githubusercontent.com/aonz/amplify-datastore-demo/master/App.js
@@ -58,7 +60,7 @@ git commit -a -m 'Use Amplify DataStore in the local mode.'
 # Test the local version.
 ```
 
-5. Deploy the backend on AWS.
+Step 5 - Deploy the backend on AWS. This step will generate the AWS CloudFormation template to deploy the AWS services including Amazon DynamoDB and AWS AppSync. The app now works with the backend services on AWS to share the data between the multiple users.
 ```
 yarn amplify-push
 # Will take about 5 mins. 
@@ -76,7 +78,7 @@ git commit -a -m 'Deploy the backend on AWS.'
 # - Online/offline sync.
 ```
 
-6. Deploy the frontend on AWS.
+Step 6 - Deploy the frontend on AWS. This step will update the AWS CloudFormation template to deploy the React app to AWS Amplify Console.
 ```
 aws codecommit create-repository --repository-name amplify-datastore-app \
   --repository-description 'AWS Amplify DataStore App'
@@ -94,7 +96,7 @@ git commit -a -m 'Deploy the frontend on AWS.'
 # Test the version with both the frontend and backend on AWS.
 ```
 
-7. Cleanup
+Step 7 - Cleanup
 ```
 amplify delete
 aws codecommit delete-repository --repository-name amplify-datastore-app
